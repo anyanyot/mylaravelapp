@@ -37,6 +37,21 @@
                                 @endif
                             </div>
                         </div>
+						
+		     <div class="form-group{{ $errors->has('no_phone') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">No Phone</label>
+
+                            <div class="col-md-6">
+                                <input id="no_phone" type="text" class="form-control" name="no_phone" required>
+
+                                @if ($errors->has('no_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+			 </div>
+					
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
