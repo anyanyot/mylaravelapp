@@ -63,10 +63,10 @@ class PasswordBroker implements PasswordBrokerContract
         $id =$user->id;
         
         $data = new SMS;
-         $this->tokens->create($user);
+         $token=$this->tokens->create($user);
 
       //put data to column message in SMS table
-         $data->sms ="Please copy this link to reset your password. http://localhost:8000/password/reset/".$this->tokens->create($user);
+         $data->sms ="Please copy this link to reset your password. http://localhost:8000/password/reset/".$token;
          $data->no_phone =($no_phone);
          $data->users_id =($id);
     
@@ -79,10 +79,10 @@ class PasswordBroker implements PasswordBrokerContract
         // Once we have the reset token, we are ready to send the message out to this
         // user with a link to reset their password. We will then redirect back to
         // the current URI having nothing set in the session to indicate errors.
-        
-        /*$user->sendPasswordResetNotification(
-            $this->tokens->create($user)
-        );*/
+
+        $user->sendPasswordResetNotification(
+            $token
+        );
 
         return static::RESET_LINK_SENT;
     }
